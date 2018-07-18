@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace nat_geo.net
 {
-    class Program
+    static class Program
     {
         // Return string between two strings :)
         private static string Between(string theString, string sThis, string sThat)
@@ -19,7 +19,7 @@ namespace nat_geo.net
 
         // C# Slug function: Props to Kamran Ayub with my small changes
         // http://predicatet.blogspot.com/2009/04/improved-c-slug-generator-or-how-to.html
-        private static string GenerateSlug(this string phrase)
+        private static string GenerateSlug(string phrase)
         {
             phrase = Regex.Replace(phrase, @"[^a-z0-9\s-]", ""); // invalid chars           
             phrase = Regex.Replace(phrase, @"\s+", " ").Trim(); // convert multiple spaces into one space   
@@ -32,7 +32,9 @@ namespace nat_geo.net
         {
             // First get data from the picture of the day page (which is not the actual image)
             const string URL = "https://www.nationalgeographic.com/photography/photo-of-the-day/";
+          
             WebClient webReader = new WebClient();
+            System.Net.ServicePointManager.SecurityProtocol &= ~SecurityProtocolType.Ssl3;
             string rawHTML = webReader.DownloadString(URL);
 
             // Scrub the raw data to find the actual picture of the day URL
@@ -40,8 +42,10 @@ namespace nat_geo.net
 
             // Scrub again and get the title which will be used to name fthe filename
             string title = Between(rawHTML, "<meta property=\"og:title\" content=\"", "\"");
-            string userprofileFolder = Environment.GetEnvironmentVariable("USERPROFILE");
+            string userprofileFolder = Environment.GetEnvironmentVariable("USERPROFILE") + "\\mobi.albisoft.nat-geo\\";
             string fileName = userprofileFolder + GenerateSlug(title) + ".jpg";
+
+            System.IO.Directory.CreateDirectory(userprofileFolder);
 
             // Create a new WebClient instance.
             WebClient myWebClient = new WebClient();

@@ -1,2 +1,7 @@
 c:\code\nat-geo.net\nat-geo.net\obj\Debug\nat-geo.net.csprojAssemblyReference.cache
 c:\code\nat-geo.net\nat-geo.net\obj\Debug\nat-geo.net.csproj.CoreCompileInputs.cache
+c:\code\nat-geo.net\nat-geo.net\bin\Debug\nat-geo.net.exe
+c:\code\nat-geo.net\nat-geo.net\bin\Debug\nat-geo.net.pdb
+c:\code\nat-geo.net\nat-geo.net\obj\Debug\nat-geo.net.exe
+c:\code\nat-geo.net\nat-geo.net\obj\Debug\nat-geo.net.pdb
+c:\code\nat-geo.net\nat-geo.net\bin\Debug\nat-geo.net.exe.config
